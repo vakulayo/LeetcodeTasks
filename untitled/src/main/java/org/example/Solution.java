@@ -42,12 +42,13 @@ public class Solution {
     // https://leetcode.com/problems/add-two-numbers/description/ problem #2
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
-        List<Integer> result = new ArrayList<>();
-        boolean additionalOne = false;
+        int additionalOne = 0;
 
-        while (l1 != null || l2 != null) {
+        ListNode resultList = new ListNode();
+        ListNode currentNode = resultList;
+        while (l1 != null || l2 != null || additionalOne !=0) {
 
-            int sum = 0;
+            int sum = additionalOne;
             if (l1 != null) {
                 sum += l1.val;
                 l1 = l1.next;
@@ -58,29 +59,11 @@ public class Solution {
                 l2 = l2.next;
             }
 
-            if (additionalOne) {
-                sum++;
-                additionalOne = false;
-            }
-            if (sum > 9) {
-                additionalOne = true;
-                result.add(sum % 10);
-            } else {
-                result.add(sum);
-            }
+            additionalOne = sum / 10;
+            currentNode.next = new ListNode(sum % 10);
+            currentNode = currentNode.next;
         }
 
-        if (additionalOne) {result.add(1);}
-
-        Collections.reverse(result);
-        ListNode resultList = null;
-        for (Integer elem : result) {
-            ListNode newNode = new ListNode();
-            newNode.val = elem;
-            newNode.next = resultList;
-            resultList = newNode;
-        }
-
-        return resultList;
+        return resultList.next;
     }
 }
