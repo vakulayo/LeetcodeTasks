@@ -43,11 +43,30 @@ public class Main {
         ListNode listNode2 = solution.addTwoNumbers(l12, l22); //Should be [0]
 
         //test3:
-        ListNode l13 = createLinkedList(Arrays.asList(9,9,9,9,9,9,9));
-        ListNode l23 = createLinkedList(Arrays.asList(9,9,9,9));
+        ListNode l13 = createLinkedList(Arrays.asList(9, 9, 9, 9, 9, 9, 9));
+        ListNode l23 = createLinkedList(Arrays.asList(9, 9, 9, 9));
         ListNode listNode3 = solution.addTwoNumbers(l13, l23); //Should be [0]
 
 
+        //test1:
+        int[] nums111 = {-100, -70, 0, 3, 4};
+        int[] nums222 = {-150, -50, 4, 7};
+        System.out.println(solution.findMedianSortedArrays(nums111, nums222) + " //Should be 0");
+
+        //test2:
+        int[] nums1111 = {-100, -70, 0, 3};
+        int[] nums2222 = {-150, -50, 4, 7};
+        System.out.println(solution.findMedianSortedArrays(nums1111, nums2222) + " //Should be -25.0");
+
+        //test3:
+        int[] nums11111 = {1, 2};
+        int[] nums22222 = {3, 4};
+        System.out.println(solution.findMedianSortedArrays(nums11111, nums22222) + " //Should be 2.5");
+
+        //test4:
+        int[] nums111111 = {1, 2};
+        int[] nums222222 = {3};
+        System.out.println(solution.findMedianSortedArrays(nums111111, nums222222) + " //Should be 2");
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
