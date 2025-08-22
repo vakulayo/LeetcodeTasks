@@ -1,9 +1,6 @@
 package org.example;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.Math.min;
 
@@ -104,5 +101,34 @@ public class Solution {
         }
 
 
+    }
+
+     //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/ problem #3
+    public int lengthOfLongestSubstring(String string) {
+        int l = string.length();
+        int i = 0, j = 0;
+
+        Set<Character> unique = new HashSet<>();
+        int maxLength = 0;
+
+        if (l == 1) {
+            return 1;
+        }
+        while (j < l - 1) {
+            while (unique.add(string.charAt(j)) && (j < l - 1)) {
+                j++;
+            }
+            if (unique.size() > maxLength) {
+                maxLength = unique.size();
+            }
+
+            while (string.charAt(i) != string.charAt(j)) {
+                unique.remove(string.charAt(i));
+                i++;
+            }
+            unique.remove(string.charAt(i));
+            i++;
+        }
+        return maxLength;
     }
 }
