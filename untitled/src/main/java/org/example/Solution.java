@@ -103,7 +103,7 @@ public class Solution {
 
     }
 
-     //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/ problem #3
+    //https://leetcode.com/problems/longest-substring-without-repeating-characters/description/ problem #3
     public int lengthOfLongestSubstring(String string) {
         int l = string.length();
         int i = 0, j = 0;
@@ -130,5 +130,16 @@ public class Solution {
             i++;
         }
         return maxLength;
+    }
+
+    //https://leetcode.com/problems/palindrome-number/description/ problem #9
+    public boolean isPalindrome(int x) {
+       int y=0;
+       int initial = x;
+        while (x >= 1) {
+            y = y*10 + x%10;
+            x = x/10;
+        }
+        return initial == y;
     }
 }

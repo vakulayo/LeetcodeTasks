@@ -73,6 +73,11 @@ public class Main {
         String s = "'*y]5\\)&?;!y\"ak7(!x;qw]n\\442h{8wy?\\_d$?i~$31ws[.ju=}]'0&x36z:~bav-.?68%>!hy<tc5r{9d.:v~hd:~pi9kac12)";
         String sss = "aab";
         System.out.println(solution.lengthOfLongestSubstring(sss) + " //Should be 2");
+
+        //test1:
+        System.out.println(solution.isPalindrome(1234) + " //Should be false");
+        System.out.println(solution.isPalindrome(1234321) + " //Should be true");
+
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
