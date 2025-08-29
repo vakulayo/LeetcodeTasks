@@ -134,12 +134,36 @@ public class Solution {
 
     //https://leetcode.com/problems/palindrome-number/description/ problem #9
     public boolean isPalindrome(int x) {
-       int y=0;
-       int initial = x;
+        int y = 0;
+        int initial = x;
         while (x >= 1) {
-            y = y*10 + x%10;
-            x = x/10;
+            y = y * 10 + x % 10;
+            x = x / 10;
         }
         return initial == y;
+    }
+
+    //https://leetcode.com/problems/valid-parentheses/ problem #20
+    public boolean isValid(String s) {
+        Stack stack = new Stack();
+
+        String[] allParenthese = s.split("");
+        for (String p : allParenthese) {
+            if (p.equals("(") || p.equals("{") || p.equals("[")) {
+                stack.push(p);
+            } else if (stack.isEmpty()) {
+                return false;
+            } else {
+
+            Object pop = stack.pop();
+            if (p.equals(")") && !pop.equals("(")) {
+                return false;
+            } else if (p.equals("}") && !pop.equals("{")) {
+                return false;
+            } else if (p.equals("]") && !pop.equals("[")) {
+                return false;
+            }
+        }}
+        return stack.isEmpty();
     }
 }

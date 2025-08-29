@@ -78,6 +78,10 @@ public class Main {
         System.out.println(solution.isPalindrome(1234) + " //Should be false");
         System.out.println(solution.isPalindrome(1234321) + " //Should be true");
 
+        //test1:
+        System.out.println(solution.isValid("()[]{}") + " //Should be true");
+        System.out.println(solution.isValid( "([)]") + " //Should be false");
+        System.out.println(solution.isValid( "]") + " //Should be false");
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
