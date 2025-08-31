@@ -144,6 +144,7 @@ public class Solution {
     }
 
     //https://leetcode.com/problems/valid-parentheses/ problem #20
+
     public boolean isValid(String s) {
         Stack stack = new Stack();
 
@@ -155,15 +156,43 @@ public class Solution {
                 return false;
             } else {
 
-            Object pop = stack.pop();
-            if (p.equals(")") && !pop.equals("(")) {
-                return false;
-            } else if (p.equals("}") && !pop.equals("{")) {
-                return false;
-            } else if (p.equals("]") && !pop.equals("[")) {
-                return false;
+                Object pop = stack.pop();
+                if (p.equals(")") && !pop.equals("(")) {
+                    return false;
+                } else if (p.equals("}") && !pop.equals("{")) {
+                    return false;
+                } else if (p.equals("]") && !pop.equals("[")) {
+                    return false;
+                }
             }
-        }}
+        }
         return stack.isEmpty();
+    }
+
+    //https://leetcode.com/problems/longest-common-prefix/ problem #14
+    public String longestCommonPrefix(String[] strs) {
+        if (strs.length == 0) {
+            return "";
+        }
+
+        if (strs[0].isEmpty()) {
+            return "";
+        }
+        String commonPart = "";
+
+        for (int i = 0; i < strs[0].length(); i++) {
+            char c = strs[0].charAt(i);
+
+            for (String word : strs) {
+                if (i > word.length()-1) {
+                    return commonPart;
+                }
+                if (word.charAt(i) != c) {
+                    return commonPart;
+                }
+            }
+            commonPart += c;
+        }
+        return commonPart;
     }
 }

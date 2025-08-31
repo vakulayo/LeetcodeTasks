@@ -82,6 +82,12 @@ public class Main {
         System.out.println(solution.isValid("()[]{}") + " //Should be true");
         System.out.println(solution.isValid( "([)]") + " //Should be false");
         System.out.println(solution.isValid( "]") + " //Should be false");
+
+        //test
+        String[] words = {"flower","flow","flight"};
+        System.out.println(solution.longestCommonPrefix(words) + " //Should be fl");
+        String[] words2 = {"dog","racecar","car"};
+        System.out.println(solution.longestCommonPrefix(words2) + " //Should be \"\"");
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
