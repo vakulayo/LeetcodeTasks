@@ -1,8 +1,8 @@
 package org.example;
 
-import java.util.*;
-
-import static java.lang.Math.min;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Stack;
 
 public class Solution {
 
@@ -184,7 +184,7 @@ public class Solution {
             char c = strs[0].charAt(i);
 
             for (String word : strs) {
-                if (i > word.length()-1) {
+                if (i > word.length() - 1) {
                     return commonPart;
                 }
                 if (word.charAt(i) != c) {
@@ -194,5 +194,82 @@ public class Solution {
             commonPart += c;
         }
         return commonPart;
+    }
+
+    //https://leetcode.com/problems/longest-palindromic-substring/ problem #5
+    public String longestPalindrome(String s) {
+
+        String longest = "";
+
+        for (int k = 0; k < s.length(); k++) {
+            String even = maxPalindrome(s, k, k);
+            String odd = maxPalindrome(s, k, k + 1);
+
+            if (even.length() > longest.length()) {
+                longest = even;
+            }
+
+            if (odd.length() > longest.length()) {
+                longest = odd;
+            }
+        }
+
+        return longest;
+    }
+
+    private String maxPalindrome(String s, int left, int right) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            left--;
+            right++;
+        }
+        return s.substring(left + 1, right);
+    }
+
+    //https://leetcode.com/problems/longest-palindromic-substring/ problem #5 before beautifying
+    public String longestPalindrome1(String s) {
+
+        int maxLen = 0, maxI = 0, maxJ = 0;
+
+        for (int k = 0; k < s.length(); k++) {
+            int i = k, j = k;
+
+            while (i > 0 && j < s.length() - 1) {
+                if (s.charAt(i - 1) == s.charAt(j + 1)) {
+                    i--;
+                    j++;
+                } else {
+                    break;
+                }
+            }
+
+            if (j + 1 - i > maxLen) {
+                maxLen = j + 1 - i;
+                maxI = i;
+                maxJ = j;
+            }
+        }
+
+
+        for (int k = 0; k < s.length() - 1; k++) {
+            if (s.charAt(k) == s.charAt(k + 1)) {
+                int i = k, j = k + 1;
+
+                while (i > 0 && j < s.length() - 1) {
+                    if (s.charAt(i - 1) == s.charAt(j + 1)) {
+                        i--;
+                        j++;
+                    } else {
+                        break;
+                    }
+                }
+
+                if (j + 1 - i > maxLen) {
+                    maxLen = j + 1 - i;
+                    maxI = i;
+                    maxJ = j;
+                }
+            }
+        }
+        return s.substring(maxI, maxJ + 1);
     }
 }

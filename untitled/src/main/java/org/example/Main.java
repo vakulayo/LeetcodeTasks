@@ -88,6 +88,13 @@ public class Main {
         System.out.println(solution.longestCommonPrefix(words) + " //Should be fl");
         String[] words2 = {"dog","racecar","car"};
         System.out.println(solution.longestCommonPrefix(words2) + " //Should be \"\"");
+
+        //test
+        System.out.println(solution.longestPalindrome("abaa") + " //Should be aba");
+        System.out.println(solution.longestPalindrome("abbaa") + " //Should be abba");
+
+        System.out.println(solution.longestPalindrome1("abaa") + " //Should be aba");
+        System.out.println(solution.longestPalindrome1("abbaa") + " //Should be abba");
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
