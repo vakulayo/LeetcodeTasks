@@ -80,13 +80,13 @@ public class Main {
 
         //test1:
         System.out.println(solution.isValid("()[]{}") + " //Should be true");
-        System.out.println(solution.isValid( "([)]") + " //Should be false");
-        System.out.println(solution.isValid( "]") + " //Should be false");
+        System.out.println(solution.isValid("([)]") + " //Should be false");
+        System.out.println(solution.isValid("]") + " //Should be false");
 
         //test
-        String[] words = {"flower","flow","flight"};
+        String[] words = {"flower", "flow", "flight"};
         System.out.println(solution.longestCommonPrefix(words) + " //Should be fl");
-        String[] words2 = {"dog","racecar","car"};
+        String[] words2 = {"dog", "racecar", "car"};
         System.out.println(solution.longestCommonPrefix(words2) + " //Should be \"\"");
 
         //test
@@ -95,6 +95,14 @@ public class Main {
 
         System.out.println(solution.longestPalindrome1("abaa") + " //Should be aba");
         System.out.println(solution.longestPalindrome1("abbaa") + " //Should be abba");
+
+        //test
+        System.out.println(solution.reverse(123) + " //Should be 321");
+        System.out.println(solution.reverse(120) + " //Should be 21");
+        System.out.println(solution.reverse(-123) + " //Should be -321");
+        System.out.println(solution.reverse(1534236469) + " //Should be 0");
+        System.out.println(solution.reverse(-1563847412) + " //Should be 0");
+
     }
 
     public static ListNode createLinkedList(List<Integer> l) {

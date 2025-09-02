@@ -272,4 +272,19 @@ public class Solution {
         }
         return s.substring(maxI, maxJ + 1);
     }
+
+
+    //https://leetcode.com/problems/reverse-integer/description/ problem #7
+    public int reverse(int x) {
+        int y = 0;
+        while (Math.abs(x) >= 1) {
+            long result = 10 * ((long) y) + x % 10;
+            if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
+                return 0;
+            }
+            y = y * 10 + x % 10;
+            x = x / 10;
+        }
+        return y;
+    }
 }
