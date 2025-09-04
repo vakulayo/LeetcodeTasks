@@ -287,4 +287,33 @@ public class Solution {
         }
         return y;
     }
+
+    //https://leetcode.com/problems/zigzag-conversion/ problem #6
+    public String convert(String s, int numRows) {
+        String result = "";
+        if (s.isEmpty() || s.length() == 1 || numRows == 1) {return s;}
+        for (int row = 0; row < numRows; row++) {
+            int position = row;
+            int large = 2 * (numRows - 1) - 2 * row;
+            int small = 2 * row;
+            boolean direction = true;
+
+            while (position < s.length()) {
+                result += s.charAt(position);
+
+                if (small == 0 || large == 0) {
+                    position += large + small;
+                } else {
+                    if (direction) {
+                        position += large;
+                        direction = false;
+                    } else {
+                        position += small;
+                        direction = true;
+                    }
+                }
+            }
+        }
+        return result;
+    }
 }

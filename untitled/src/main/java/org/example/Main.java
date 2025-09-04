@@ -103,6 +103,10 @@ public class Main {
         System.out.println(solution.reverse(1534236469) + " //Should be 0");
         System.out.println(solution.reverse(-1563847412) + " //Should be 0");
 
+        //test
+        System.out.println(solution.convert("PAYPALISHIRING", 3) + " //Should be PAHNAPLSIIGYIR");
+        System.out.println(solution.convert("PAYPALISHIRING", 4) + " //Should be PINALSIGYAHRPI");
+
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
