@@ -291,7 +291,9 @@ public class Solution {
     //https://leetcode.com/problems/zigzag-conversion/ problem #6
     public String convert(String s, int numRows) {
         String result = "";
-        if (s.isEmpty() || s.length() == 1 || numRows == 1) {return s;}
+        if (s.isEmpty() || s.length() == 1 || numRows == 1) {
+            return s;
+        }
         for (int row = 0; row < numRows; row++) {
             int position = row;
             int large = 2 * (numRows - 1) - 2 * row;
@@ -312,6 +314,49 @@ public class Solution {
                         direction = true;
                     }
                 }
+            }
+        }
+        return result;
+    }
+
+    //https://leetcode.com/problems/string-to-integer-atoi/description/ problem #8
+    public int myAtoi(String s) {
+        s = s.trim();
+
+        if (s.isEmpty()) {
+            return 0;
+        }
+
+        boolean isNegative = false;
+
+        int result = 0;
+        if (s.charAt(0) == '+' || s.charAt(0) == '-') {
+            if (s.charAt(0) == '-') {
+                isNegative = true;
+            }
+            s = s.substring(1);
+        }
+
+        for (int i = 0; i < s.length(); i++) {
+            Character c = s.charAt(i);
+            if (Character.isDigit(c)) {
+                if (isNegative) {
+                    long check = (long) result * 10 - Character.getNumericValue(c);
+                    if (check <= Integer.MIN_VALUE) {
+                        return Integer.MIN_VALUE;
+                    } else {
+                        result = result * 10 - Character.getNumericValue(c);
+                    }
+                } else {
+                    long check = (long) result * 10 + Character.getNumericValue(c);
+                    if (check >= Integer.MAX_VALUE) {
+                        return Integer.MAX_VALUE;
+                    } else {
+                        result = result * 10 + Character.getNumericValue(c);
+                    }
+                }
+            } else {
+                break;
             }
         }
         return result;

@@ -107,6 +107,17 @@ public class Main {
         System.out.println(solution.convert("PAYPALISHIRING", 3) + " //Should be PAHNAPLSIIGYIR");
         System.out.println(solution.convert("PAYPALISHIRING", 4) + " //Should be PINALSIGYAHRPI");
 
+
+        //test
+        System.out.println(solution.myAtoi("  42") + " //Should be 42");
+        System.out.println(solution.myAtoi("-042") + " //Should be -42");
+        System.out.println(solution.myAtoi("1337c0d3") + " //Should be 1337");
+        System.out.println(solution.myAtoi("0-1") + " //Should be 0");
+        System.out.println(solution.myAtoi("words and 987") + " //Should be 0");
+        System.out.println(solution.myAtoi("000023") + " //Should be 23");
+        System.out.println(solution.myAtoi("+133") + " //Should be 133");
+        System.out.println(solution.myAtoi( "-91283472332") + " //Should be -2147483648");
+
     }
 
     public static ListNode createLinkedList(List<Integer> l) {
