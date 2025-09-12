@@ -364,10 +364,7 @@ public class Solution {
 
     //https://leetcode.com/problems/swap-nodes-in-pairs/ problem #24
     public ListNode swapPairs(ListNode head) {
-        if (head == null) {
-            return null;
-        }
-        if (head.next == null) {
+        if (head == null || head.next == null) {
             return head;
         }
         ListNode result = head.next;
@@ -393,6 +390,16 @@ public class Solution {
             head = head.next.next;
         }
         return result;
+    }
+    //https://leetcode.com/problems/swap-nodes-in-pairs/ problem #24 recursion
+    public ListNode swapPairsRecursion(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode temp = head.next;
+        head.next = swapPairsRecursion(temp.next);
+        temp.next = head;
+        return temp;
     }
 
 

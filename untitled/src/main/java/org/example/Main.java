@@ -129,6 +129,9 @@ public class Main {
         //    printLinkedList(createLinkedList(Arrays.asList(2, 1)));
         printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(2, 1))));
         System.out.print("// Should be    ---> 2 ---> 1");
+
+        printLinkedList(solution.swapPairsRecursion(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1))));
+        System.out.print("// Should be  ---> 2 ---> 1 ---> 4 ---> 3 ---> 6 ---> 5 ---> 8 ---> 7");
     }
 
 
