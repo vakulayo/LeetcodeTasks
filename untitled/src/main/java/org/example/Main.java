@@ -116,8 +116,29 @@ public class Main {
         System.out.println(solution.myAtoi("words and 987") + " //Should be 0");
         System.out.println(solution.myAtoi("000023") + " //Should be 23");
         System.out.println(solution.myAtoi("+133") + " //Should be 133");
-        System.out.println(solution.myAtoi( "-91283472332") + " //Should be -2147483648");
+        System.out.println(solution.myAtoi("-91283472332") + " //Should be -2147483648");
 
+
+        //test
+        // printLinkedList(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1)));
+        printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1))));
+        System.out.print("// Should be  ---> 2 ---> 1 ---> 4 ---> 3 ---> 6 ---> 5 ---> 8 ---> 7");
+        //   printLinkedList(createLinkedList(Arrays.asList(3, 2, 1)));
+        printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(3, 2, 1))));
+        System.out.print("// Should be   ---> 2 ---> 1 ---> 3");
+        //    printLinkedList(createLinkedList(Arrays.asList(2, 1)));
+        printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(2, 1))));
+        System.out.print("// Should be    ---> 2 ---> 1");
+    }
+
+
+    public static void printLinkedList(ListNode head) {
+        System.out.println();
+        while (head != null) {
+            System.out.print(" ---> " + head.val);
+            head = head.next;
+        }
+        System.out.println();
     }
 
     public static ListNode createLinkedList(List<Integer> l) {

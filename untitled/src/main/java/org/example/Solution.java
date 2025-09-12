@@ -361,4 +361,46 @@ public class Solution {
         }
         return result;
     }
+
+    //https://leetcode.com/problems/swap-nodes-in-pairs/ problem #24
+    public ListNode swapPairs(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return head;
+        }
+        ListNode result = head.next;
+
+        ListNode aa = head;
+        ListNode bb = head.next;
+        ListNode cc = head.next.next;
+
+        head = bb;
+        head.next = aa;
+        head.next.next = cc;
+
+        head = head.next;
+
+        while (head != null && head.next != null && head.next.next != null) {
+            ListNode b = head.next;
+            ListNode c = head.next.next;
+            ListNode d = head.next.next.next;
+
+            head.next = c;
+            head.next.next = b;
+            head.next.next.next = d;
+            head = head.next.next;
+        }
+        return result;
+    }
+
+
+    public static void printLinkedList(ListNode head) {
+        while (head != null) {
+            System.out.print(" ---> " + head.val);
+            head = head.next;
+        }
+        System.out.println();
+    }
 }
