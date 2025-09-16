@@ -120,18 +120,19 @@ public class Main {
 
 
         //test
-        // printLinkedList(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1)));
         printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1))));
         System.out.print("// Should be  ---> 2 ---> 1 ---> 4 ---> 3 ---> 6 ---> 5 ---> 8 ---> 7");
-        //   printLinkedList(createLinkedList(Arrays.asList(3, 2, 1)));
         printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(3, 2, 1))));
         System.out.print("// Should be   ---> 2 ---> 1 ---> 3");
-        //    printLinkedList(createLinkedList(Arrays.asList(2, 1)));
         printLinkedList(solution.swapPairs(createLinkedList(Arrays.asList(2, 1))));
         System.out.print("// Should be    ---> 2 ---> 1");
 
         printLinkedList(solution.swapPairsRecursion(createLinkedList(Arrays.asList(8, 7, 6, 5, 4, 3, 2, 1))));
-        System.out.print("// Should be  ---> 2 ---> 1 ---> 4 ---> 3 ---> 6 ---> 5 ---> 8 ---> 7");
+        System.out.println("// Should be  ---> 2 ---> 1 ---> 4 ---> 3 ---> 6 ---> 5 ---> 8 ---> 7");
+
+        //test
+        System.out.println(solution.maxArea(new int[]{1, 8, 6, 2, 5, 4, 8, 3, 7}) + " //Should be 49");
+        System.out.println(solution.maxArea(new int[]{1,1}) + " //Should be 1");
     }
 
 

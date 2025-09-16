@@ -391,6 +391,7 @@ public class Solution {
         }
         return result;
     }
+
     //https://leetcode.com/problems/swap-nodes-in-pairs/ problem #24 recursion
     public ListNode swapPairsRecursion(ListNode head) {
         if (head == null || head.next == null) {
@@ -400,6 +401,29 @@ public class Solution {
         head.next = swapPairsRecursion(temp.next);
         temp.next = head;
         return temp;
+    }
+
+    //https://leetcode.com/problems/container-with-most-water/description/ #11 problem
+    public int maxArea(int[] height) {
+        int left = 0, right = height.length - 1;
+        int maxVolume = (right - left) * java.lang.Math.min(height[right], height[left]);
+
+        while (left < right) {
+            if (height[right] >= height[left]) {
+                left++;
+                int currentVolume = (right - left) * java.lang.Math.min(height[right], height[left]);
+                if (currentVolume > maxVolume) {
+                    maxVolume = currentVolume;
+                }
+            } else {
+                right--;
+                int currentVolume = (right - left) * java.lang.Math.min(height[right], height[left]);
+                if (currentVolume > maxVolume) {
+                    maxVolume = currentVolume;
+                }
+            }
+        }
+        return maxVolume;
     }
 
 
