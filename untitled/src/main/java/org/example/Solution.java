@@ -1,8 +1,6 @@
 package org.example;
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class Solution {
 
@@ -424,6 +422,93 @@ public class Solution {
             }
         }
         return maxVolume;
+    }
+
+    //https://leetcode.com/problems/3sum/description/ #15 problem
+    public List<List<Integer>> threeSum(int[] nums) {
+        Arrays.sort(nums);
+        List<List<Integer>> result = new ArrayList<>();
+        List<Integer> withoutDuplicates = new ArrayList<>();
+        int last = nums[0];
+        List<Integer> duplicates = new ArrayList<>();
+        int count = 1;
+        withoutDuplicates.add(last);
+
+        for (int s = 1; s < nums.length; s++) {
+            if (nums[s] == last) {
+                count++;
+                if (count == 2 && nums[s] != 0) {
+                    duplicates.add(nums[s]);
+                }
+                if (count == 3 && nums[s] == 0) {
+                    result.add(Arrays.asList(0, 0, 0));
+                }
+            } else {
+                last = nums[s];
+                withoutDuplicates.add(last);
+                count = 1;
+            }
+        }
+
+        for (Integer item : duplicates) {
+            if (binarySearch(withoutDuplicates, -2 * item) >= 0) {
+                result.add(Arrays.asList(item, item, -2 * item));
+            }
+        }
+
+        List<Integer> negative = new ArrayList<>();
+        List<Integer> positive = new ArrayList<>();
+
+
+        for (Integer item : withoutDuplicates) {
+            if (item < 0) {
+                negative.add(item);
+            } else {
+                positive.add(item);
+            }
+        }
+
+        int size = negative.size();
+
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
+                int sum = negative.get(i) + negative.get(j);
+                if (binarySearch(positive, -sum) >= 0) {
+                    result.add(Arrays.asList(negative.get(i), negative.get(j), -sum));
+                }
+            }
+        }
+
+        int size1 = positive.size();
+
+        for (int i = 0; i < size1 - 1; i++) {
+            for (int j = i + 1; j < size1; j++) {
+                int sum = positive.get(i) + positive.get(j);
+                if (binarySearch(negative, -sum) >= 0) {
+                    result.add(Arrays.asList(positive.get(i), positive.get(j), -sum));
+                }
+            }
+        }
+        return result;
+    }
+
+    public static int binarySearch(List<Integer> array, int valueToFind) {
+        int index = -1;
+        int left = 0, right = array.size() - 1;
+
+        while (left <= right) {
+            int mid = left + (right - left) / 2;
+
+            if (array.get(mid) > valueToFind) {
+                right = mid - 1;
+            } else if (array.get(mid) < valueToFind) {
+                left = mid + 1;
+            } else if (array.get(mid) == valueToFind) {
+                return mid;
+            }
+        }
+
+        return index;
     }
 
 
